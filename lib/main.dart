@@ -1,7 +1,11 @@
+import 'package:critical_dudes/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'configs.dart';
 
-void main() {
+Future<void> main() async {
+  http.get(Uri.parse("https://api.rawg.io/api/games"), headers: )
+
   runApp(const App());
 }
 
@@ -15,33 +19,7 @@ class App extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: currentTheme.currentTheme(),
-      home: const HomePage(),
+      home: const SplashScreen(),
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    currentTheme.addListener(() {
-      setState(() {});
-    });
   }
 }
