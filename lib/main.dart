@@ -1,25 +1,35 @@
-import 'package:critical_dudes/splash.dart';
+import 'package:critical_dudes/home.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'configs.dart';
 
-Future<void> main() async {
-  http.get(Uri.parse("https://api.rawg.io/api/games"), headers: )
-
+void main() {
   runApp(const App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Critical Dudes',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: currentTheme.currentTheme(),
-      home: const SplashScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    currentTheme.addListener(() {
+      setState(() {});
+    });
   }
 }
