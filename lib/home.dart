@@ -110,6 +110,10 @@ class _HomePageState extends State<HomePage> {
                         return Center(
                             child: Column(
                           children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text("Loading image..."),
+                            ),
                             LinearProgressIndicator(
                               value: loadingProgress.expectedTotalBytes != null
                                   ? loadingProgress.cumulativeBytesLoaded /
@@ -117,20 +121,19 @@ class _HomePageState extends State<HomePage> {
                                   : null,
                               minHeight: 8,
                             ),
-                            const Text("Loading image..."),
                           ],
                         ));
                       },
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
                         game.name,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   )
@@ -193,6 +196,10 @@ class _HomePageState extends State<HomePage> {
                         return Center(
                             child: Column(
                           children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text("Loading image..."),
+                            ),
                             LinearProgressIndicator(
                               value: loadingProgress.expectedTotalBytes != null
                                   ? loadingProgress.cumulativeBytesLoaded /
@@ -200,20 +207,19 @@ class _HomePageState extends State<HomePage> {
                                   : null,
                               minHeight: 8,
                             ),
-                            const Text("Loading image..."),
                           ],
                         ));
                       },
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
                         dev.name,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   )
@@ -237,7 +243,7 @@ class _HomePageState extends State<HomePage> {
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             const SliverAppBar(
               floating: true,
-              title: Text("Games List"),
+              title: Text("Lists"),
               centerTitle: true,
               bottom: TabBar(
                 tabs: [
@@ -253,13 +259,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    currentTheme.addListener(() {
-      setState(() {});
-    });
   }
 }
