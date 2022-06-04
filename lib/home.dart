@@ -61,18 +61,18 @@ class _HomePageState extends State<HomePage> {
       },
       child: GridView.builder(
         itemCount: games.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 8.0 / 10.0,
             crossAxisCount: 2
         ),
         itemBuilder: (BuildContext context, int index) {
           final game = games[index];
           return Padding(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Card(
               semanticContainer: true,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(20),
               ),
               clipBehavior: Clip.antiAlias,
               child: Column(
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         body: _buildList(),
-      ),
+       ),
     );
   }
 
