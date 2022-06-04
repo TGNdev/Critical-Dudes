@@ -1,7 +1,7 @@
 library vars;
 import 'package:critical_dudes/configs.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -11,24 +11,33 @@ class SettingsPage extends StatefulWidget {
 }
 
 int selectedGamesPerList = 10;
+int selectedDevsPerList = 10;
 
 class _SettingsPageState extends State<SettingsPage> {
+  //late Future<bool> _isDark;
   bool isDark = true;
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  /*Future<void> saveThemePref() async {
+    final SharedPreferences prefs = await _prefs;
+    final isDark = prefs.
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Settings"),
         centerTitle: true,
       ),
       body: ListView(
         children: [
           Card(
             child: ListTile(
-              leading: isDark ? Icon(Icons.sunny) : Icon(Icons.dark_mode),
-              title: isDark ? Text("Switch to Light Mode") : Text("Switch to Dark Mode"),
-              subtitle: Text("Tap to Switch"),
+              leading: isDark ? const Icon(Icons.sunny) : const Icon(Icons.dark_mode),
+              title: isDark ? const Text("Switch to Light Mode") : const Text("Switch to Dark Mode"),
+              subtitle: const Text("Tap to Switch"),
               onTap: () {
                 setState((){
                   isDark = !isDark;
@@ -39,23 +48,23 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           Card(
             child: ListTile(
-              leading: Icon(Icons.numbers),
-              title: Text("Number of games"),
-              subtitle: Text("Choose the amount of games you want to see in the list"),
+              leading: const Icon(Icons.numbers),
+              title: const Text("Number of games"),
+              subtitle: const Text("Choose the amount of games you want to see in the list"),
               trailing: DropdownButton(
-                icon: Icon(Icons.arrow_downward),
-                items: [
+                icon: const Icon(Icons.arrow_downward),
+                items: const [
                   DropdownMenuItem(
-                    child: Text("6"),
                     value: 6,
+                    child: Text("6"),
                   ),
                   DropdownMenuItem(
-                    child: Text("10"),
                     value: 10,
+                    child: Text("10"),
                   ),
                   DropdownMenuItem(
-                    child: Text("20"),
                     value: 20,
+                    child: Text("20"),
                   ),
                 ],
                 onChanged: (int? value) {
@@ -64,6 +73,36 @@ class _SettingsPageState extends State<SettingsPage> {
                   });
                 },
                 value: selectedGamesPerList,
+              ),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.numbers),
+              title: const Text("Number of developers"),
+              subtitle: const Text("Choose the amount of developers you want to see in the list"),
+              trailing: DropdownButton(
+                icon: const Icon(Icons.arrow_downward),
+                items: const [
+                  DropdownMenuItem(
+                    value: 6,
+                    child: Text("6"),
+                  ),
+                  DropdownMenuItem(
+                    value: 10,
+                    child: Text("10"),
+                  ),
+                  DropdownMenuItem(
+                    value: 20,
+                    child: Text("20"),
+                  ),
+                ],
+                onChanged: (int? value) {
+                  setState(() {
+                    selectedDevsPerList = value!;
+                  });
+                },
+                value: selectedDevsPerList,
               ),
             ),
           )

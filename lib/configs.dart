@@ -17,8 +17,6 @@ class MyTheme with ChangeNotifier {
   }
 }
 
-MyTheme currentTheme = MyTheme();
-
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
@@ -29,7 +27,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           ListTile(
             leading: Icon(Icons.house),
-            title: Text("Games List"),
+            title: Text("Home"),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(context,
@@ -50,3 +48,5 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
+
+MyTheme currentTheme = MyTheme();
