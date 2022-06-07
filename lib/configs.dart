@@ -26,21 +26,23 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.house),
-            title: Text("Home"),
-            trailing: Icon(Icons.arrow_forward),
+            leading: const Icon(Icons.house),
+            title: const Text("Home"),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePage()));
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Settings"),
-            trailing: Icon(Icons.arrow_forward),
+            leading: const Icon(Icons.settings),
+            title: const Text("Settings"),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsPage()));
             },
           )
         ],

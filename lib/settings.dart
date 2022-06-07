@@ -1,4 +1,5 @@
 library vars;
+
 import 'package:critical_dudes/configs.dart';
 import 'package:flutter/material.dart';
 

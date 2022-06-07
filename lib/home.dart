@@ -21,10 +21,11 @@ class _HomePageState extends State<HomePage> {
   RefreshController devsController = RefreshController(initialRefresh: true);
 
   int page = 1;
+  String orderBy = "-rating_count";
 
   Future<bool> getGames({bool isRefresh = false}) async {
     final response = await http.get(Uri.parse(
-        "https://api.rawg.io/api/games?key=$apiKey&page_size=$selectedGamesPerList&page=$page"));
+        "https://api.rawg.io/api/games?key=$apiKey&page_size=$selectedGamesPerList&ordering=$orderBy&page=$page"));
 
     if (response.statusCode == 200) {
       final result = gamesDataFromJson(response.body);
@@ -241,7 +242,8 @@ class _HomePageState extends State<HomePage> {
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            const SliverAppBar(
+            SliverAppBar(
+              actions: [_orderBy()],
               floating: true,
               title: Text("Lists"),
               centerTitle: true,
@@ -258,6 +260,31 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _orderBy() {
+    return DropdownButton<String>(
+      items: const [
+        DropdownMenuItem(
+          value: "-rating_count",
+          child: Text("Rating counts"),
+        ),
+        DropdownMenuItem(
+          value: "-rating",
+          child: Text("Rating"),
+        ),
+        DropdownMenuItem(
+          value: "-name",
+          child: Text("Name"),
+        ),
+      ],
+      onChanged: (String? value) {
+        setState(() {
+          orderBy = value!;
+        });
+      },
+      value: orderBy,
     );
   }
 }
