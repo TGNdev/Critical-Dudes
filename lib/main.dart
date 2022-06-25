@@ -1,6 +1,6 @@
-import 'package:critical_dudes/home.dart';
+import 'package:critical_dudes/views/home.dart';
 import 'package:flutter/material.dart';
-import 'configs.dart';
+import 'config/configs.dart';
 
 void main() {
   runApp(const App());
@@ -9,6 +9,7 @@ void main() {
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
+  @override
   _AppState createState() => _AppState();
 }
 
